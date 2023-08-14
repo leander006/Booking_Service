@@ -17,7 +17,9 @@ const subscribeMessage = async (channel, service, binking_key) => {
     const applicationQueue = await channel.assertQueue("QUEUE_NAME");
     channel.bindQueue(applicationQueue.queue, EXCHANGE_NAME, binking_key);
     channel.consume(applicationQueue.queue, (msg) => {
-      console.log(msg.content.toString());
+      console.log("subscribe Message");
+      const payload = JSON.parse(msg.content.toString());
+      service(payload);
       channel.ack(msg);
     });
   } catch (error) {

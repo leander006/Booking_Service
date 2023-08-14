@@ -11,7 +11,7 @@ class BookingController {
     publishMessage(
       channel,
       REMINDER_BINDING_KEY,
-      JSON.stringify({ message: "success" })
+      JSON.stringify({ message: "success", service: "DEMO" })
     );
     return res.status(200).json({ message: "Successfully published message" });
   }
