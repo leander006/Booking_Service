@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 
 const apiRoutes = require("./routes/index");
 const { PORT } = require("./config/serverConfig");
-
+const {M} = require("./utils/messageQueue");
 const db = require("./models/index");
 
 const prepareAndStartServer = () => {
