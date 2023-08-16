@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 
 const apiRoutes = require("./routes/index");
 const { PORT } = require("./config/serverConfig");
-const {M} = require("./utils/messageQueue");
+// const { M } = require("./utils/messageQueue");
 const db = require("./models/index");
 
 const prepareAndStartServer = () => {
@@ -13,7 +13,11 @@ const prepareAndStartServer = () => {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
-  app.use("/api", apiRoutes);
+  app.use("/bookingService/api", apiRoutes);
+
+  app.get("/bookingService/api/v1/home", (req, res) => {
+    return res.json({ message: "success" });
+  });
 
   app.listen(PORT, async (req, res) => {
     if (process.env.DB_SYNC) {

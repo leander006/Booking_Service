@@ -8,6 +8,9 @@ const router = express.Router();
 // const channel = await createChannel();
 const bookingController = new BookingController();
 
+router.get("/info", (req, res) => {
+  return res.json({ message: "Response from api routes" });
+});
 router.post("/", bookingController.create);
 router.post("/publish", bookingController.sendMessage);
 
